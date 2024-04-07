@@ -130,7 +130,8 @@
             } else if (linePosition >= 100 && linePosition < 120) {
                 // Transition from purple to rgba(10, 3, 16, 0.955)
                 var alpha = (linePosition - 100) / 20; // Calculate opacity
-                lightingLine.style.background = rgba(10, 3, 16, ${alpha});
+                lightingLine.style.background = `rgba(10, 3, 16, ${alpha})`;
+
             } else if (linePosition >= 120 && linePosition < 200) {
                 // Line segment with blue color
                 lightingLine.style.background = 'blue';
@@ -382,7 +383,7 @@
                 <a href="http://127.0.0.1:3000/c:/Users/entre/Desktop/CODES(FOR ME)/PHOTOEDITOR.HTML">
                     <div id="logo-top">
                         <!-- Place your company logo here -->
-                        <img  src="{{ url_for('static', filename='./image/Edopics.png') }}" alt="Asutosh">
+                        <img src="{{ url_for('static', filename='./image/Edopics.png') }}" alt="Asutosh">
                         <span>Edopics</span>
                     </div>
                 </a>
@@ -530,7 +531,7 @@
         <div id="about-section">
             <h1 style="text-align: center;"></h1>
             <div class="leader-photos">
-                
+
 
             </div>
 
@@ -631,15 +632,15 @@
             function adjustBackgroundSize() {
                 const textWidth = introHeading.offsetWidth + 20; // Adding extra padding
                 const textHeight = introHeading.offsetHeight + 20; // Adding extra padding
-                background.style.width = ${textWidth}px;
-                background.style.height = ${textHeight}px;
+                background.style.width = `${ textWidth }`+ 'px';
+                background.style.height = `${ textHeight }` +'px';
                 background.style.display = 'block'; // Show background after adjusting size
             }
         </script>
 
         <style>
             #Introduction {
-                padding: 20px;
+                padding: 40px;
                 font-size: 40px;
                 color: rgb(139, 117, 117);
                 /* Set text color to white */
@@ -703,7 +704,7 @@
                 effects and adjustments. The application allows users to upload an image, apply different image
                 processing
                 operations such as brightness, blur, rotation, crop, vintage effect, and saturation adjustment and
-                You can download
+                You can download 
                 the processed image.
             </p>
             <a href="http://127.0.0.1:3000/c:/Users/entre/Desktop/CODES(FOR ME)/PHOTOEDITOR.HTML">
@@ -712,7 +713,6 @@
                     <img src="{{ url_for('static', filename='./image/Edopics.png') }}" alt="logo">
                     <br><br>
                     <span style="color: rgb(193, 120, 199);">Edopics</span>
-
                 </div>
             </a>
 
@@ -744,7 +744,7 @@
                 const limitedTiltX = Math.min(Math.max(tiltX, -maxRotation), maxRotation);
                 const limitedTiltY = Math.min(Math.max(tiltY, -maxRotation), maxRotation);
 
-                introduction.style.transform = rotateX(${limitedTiltX}deg) rotateY(${limitedTiltY}deg);
+                introduction.style.transform = `rotateX(${ limitedTiltX }deg) rotateY(${ limitedTiltY }deg)`;
             });
 
             introduction.addEventListener('mouseleave', () => {
@@ -769,29 +769,32 @@
                 /* Position relative for containing the lines */
             }
 
-.container1 a,
-#intro-heading {
-    position: relative;
-    text-decoration: none; /* Remove default underline */
-}
+            .container1 a,
+            #intro-heading {
+                position: relative;
+                text-decoration: None;
+                /* Remove default underline */
+            }
 
-.container1 a::before,
-#intro-heading::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -3px; /* Adjust as needed to position the line */
-    width: 100%;
-    height: 2px; /* Adjust as needed for line thickness */
-    background-color: blue; /* Parrot color */
-    transition: width 0.3s ease;
+            .container1 a::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: -3px;
+                /* Adjust as needed to position the line */
+                width: 0%;
+                height: 1px;
+                /* Adjust as needed for line thickness */
+                background-color: rgb(0, 216, 209);
+                /* Parrot color */
+                transition: width 0.3s ease;
+            }
 
-}
-
-.container1 a:hover::before,
-#intro-heading:hover::before {
-    width: 100%; /* Expand width on hover */
-}
+            .container1 a:hover::before,
+            #intro-heading:hover::before {
+                width: 100%;
+                /* Expand width on hover */
+            }
 
 
             h1 {
@@ -865,6 +868,8 @@
             }
         </style>
 
+
+
         <style>
             /* CSS for initial state */
             .container1 ul li,
@@ -891,8 +896,6 @@
                 transform: translateX(0);
                 /* Move even-indexed elements back into the viewport */
             }
-
-           
         </style>
 
 
@@ -901,33 +904,39 @@
 
             <ul>
                 <li>
-                    <a href="/edit" class="button-link" style="font-size:30px; color: rgb(193, 120, 199); text-decoration: none;">Brightness</a>
+                    <a href="/edit" class="button-link"
+                        style="font-size:30px; color: rgb(193, 120, 199); text-decoration: none;">Brightness</a>
 
 
                     <p>You can get a clearer image by adjusting the brightness.</p>
                 </li>
                 <li>
-                    <a href="/edit" class="button-link" style="font-size:30px; color: rgb(193, 120, 199); text-decoration: none;">Blur</a>
+                    <a href="/edit" class="button-link"
+                        style="font-size:30px; color: rgb(193, 120, 199); text-decoration: none;">Blur</a>
                     <p>You can adjust the blur level to make the image more or less blurred.</p>
                 </li>
                 <li>
-                    <a  href="/edit" class="button-link" style="font-size:30px; color: rgb(193, 120, 199); text-decoration: none;">Rotation</a>
+                    <a href="/edit" class="button-link"
+                        style="font-size:30px; color: rgb(193, 120, 199); text-decoration: none;">Rotation</a>
 
                     <p>You can rotate the image to any desired angle.</p>
                 </li>
-        
+
                 <li>
-                    <a  href="/edit" class="button-link" style="font-size:30px; color: rgb(193, 120, 199); text-decoration: none;">Cropping</a>
+                    <a href="/edit" class="button-link"
+                        style="font-size:30px; color: rgb(193, 120, 199); text-decoration: none;">Cropping</a>
 
                     <p>You can crop the image to focus on specific areas.</p>
                 </li>
                 <li>
-                    <a href="/edit" class="button-link" style="font-size:30px; color: rgb(193, 120, 199); text-decoration: none;">Saturation</a>
+                    <a href="/edit" class="button-link"
+                        style="font-size:30px; color: rgb(193, 120, 199); text-decoration: none;">Saturation</a>
 
                     <p>You can adjust the saturation to make the image more colorful or grayscale.</p>
                 </li>
                 <li>
-                    <a href="/edit" class="button-link" style="font-size:30px; color: rgb(193, 120, 199); text-decoration: none;">Color</a>
+                    <a href="/edit" class="button-link"
+                        style="font-size:30px; color: rgb(193, 120, 199); text-decoration: none;">Color</a>
 
                     <p>by this filter we can get a clear,dark,colored image</p>
                 </li>
@@ -939,41 +948,41 @@
 
 
 
-                <script>
-                    // Function to check if an element is in the viewport
-                    function isInViewport(element) {
-                        var rect = element.getBoundingClientRect();
-                        return (
-                            rect.top >= 0 &&
-                            rect.left >= 0 &&
-                            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-                        );
+        <script>
+            // Function to check if an element is in the viewport
+            function isInViewport(element) {
+                var rect = element.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+            // Function to add 'visible' class to elements when they are in the viewport
+            function addVisibleClass(elementTo) {
+                var listItems = document.querySelectorAll(elementTo);
+
+                listItems.forEach(function (item) {
+                    if (isInViewport(item)) {
+                        item.classList.add('visible');
+                    } else {
+                        item.classList.remove('visible'); // Remove the 'visible' class if it's not in the viewport
                     }
-                    // Function to add 'visible' class to elements when they are in the viewport
-                    function addVisibleClass(elementTo) {
-                        var listItems = document.querySelectorAll(elementTo);
+                });
+            }
 
-                        listItems.forEach(function (item) {
-                            if (isInViewport(item)) {
-                                item.classList.add('visible');
-                            } else {
-                                item.classList.remove('visible'); // Remove the 'visible' class if it's not in the viewport
-                            }
-                        });
-                    }
+            // Event listener for scroll event
+            window.addEventListener('scroll', function () {
+                addVisibleClass('.container1 ul li');
+                addVisibleClass('.container');
+            });
 
-                    // Event listener for scroll event
-                    window.addEventListener('scroll', function () {
-                        addVisibleClass('.container1 ul li');
-                        addVisibleClass('.container');
-                    });
+            // Initially call the function to check if any elements are already in the viewport
+            addVisibleClass('.container1 ul li');
+            addVisibleClass('.container');
 
-                    // Initially call the function to check if any elements are already in the viewport
-                    addVisibleClass('.container1 ul li');
-                    addVisibleClass('.container');
-
-                </script>
+        </script>
 
 
 
@@ -983,177 +992,169 @@
 
 
 
-                <style>
-                    .ticker-container {
-                        overflow: hidden;
-                    }
+        <style>
+            .ticker-container {
+                overflow: hidden;
+            }
 
-                    .ticker {
-                        display: inline-block;
-                        white-space: nowrap;
-                        color: rgb(139, 117, 117);
-                        animation: ticker-move 50s linear infinite;
-                    }
+            .ticker {
+                display: inline-block;
+                white-space: nowrap;
+                color: rgb(139, 117, 117);
+                animation: ticker-move 50s linear infinite;
+            }
 
-                    .footer-container {
-                        display: inline-block;
-                        margin-right: 20px;
+            .footer-container {
+                display: inline-block;
+                margin-right: 20px;
 
-                    }
+            }
 
-                    .footer-container button {
-                        width: 150px;
-                        color: rgb(193, 120, 199);
-                        height: 150px;
-                        font-size: 20px;
-                        position: relative;
-                        overflow: hidden;
-                        background-color: rgba(30, 9, 33, 0.9);
-                        /* Background color of the button */
-                        box-shadow: 0px 0px 6Px rgba(238, 0, 255, 0.9),
-                            /* Original shadow */
-                            0px 0px 6Px rgb(0, 30, 255);
-                        /* Pink shadow with linear gradient */
-                        /* Add vendor prefixes for browser compatibility */
-                        -webkit-box-shadow: 0px 0px 6Px rgb(81, 0, 97),
-                            0px 0px 6Px rgb(255, 192, 203);
-                        -moz-box-shadow: 0px 0px 6Px rgba(0, 0, 0, 0.98),
-                            0px 0px 6Px rgba(255, 192, 203, 0.8);
-                        -o-box-shadow: 0px 0px 6Px rgb(0, 0, 0),
-                            0px 0px 6Px rgba(255, 192, 203, 0.8);
+            .footer-container button {
+                width: 150px;
+                color: rgb(193, 120, 199);
+                height: 150px;
+                font-size: 20px;
+                position: relative;
+                overflow: hidden;
+                background-color: rgba(30, 9, 33, 0.9);
+                /* Background color of the button */
+                box-shadow: 0px 0px 6Px rgba(238, 0, 255, 0.9),
+                    /* Original shadow */
+                    0px 0px 6Px rgb(0, 30, 255);
+                /* Pink shadow with linear gradient */
+                /* Add vendor prefixes for browser compatibility */
+                -webkit-box-shadow: 0px 0px 6Px rgb(81, 0, 97),
+                    0px 0px 6Px rgb(255, 192, 203);
+                -moz-box-shadow: 0px 0px 6Px rgba(0, 0, 0, 0.98),
+                    0px 0px 6Px rgba(255, 192, 203, 0.8);
+                -o-box-shadow: 0px 0px 6Px rgb(0, 0, 0),
+                    0px 0px 6Px rgba(255, 192, 203, 0.8);
 
-                        border: 1px solid transparent;
-                        /* Initial border color */
-                        transition: border-color 0.5s ease;
-                        /* Smooth transition for border color change */
-                    }
+                border: 1px solid transparent;
+                /* Initial border color */
+                transition: border-color 0.5s ease;
+                /* Smooth transition for border color change */
+            }
 
-                    .footer-container button::before {
-                        content: '';
-                        position: absolute;
-                        width: 100%;
-                        height: 100%;
-                        /* background: radial-gradient(circle, rgba(245, 26, 26, 0.343) 20%, rgba(243, 117, 117, 0.4) 40%, rgba(249, 188, 188, 0.6) 70%, rgba(0,0,0, 0.8) 90%); */
-                        top: -50%;
-                        left: -50%;
-                        z-index: 2;
-                        opacity: 0;
-                        transition: opacity 2s ease;
-                        /* Smooth transition for shadow opacity change */
-                    }
+            .footer-container button::before {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                /* background: radial-gradient(circle, rgba(245, 26, 26, 0.343) 20%, rgba(243, 117, 117, 0.4) 40%, rgba(249, 188, 188, 0.6) 70%, rgba(0,0,0, 0.8) 90%); */
+                top: -50%;
+                left: -50%;
+                z-index: 2;
+                opacity: 0;
+                transition: opacity 2s ease;
+                /* Smooth transition for shadow opacity change */
+            }
 
-                    .footer-container:hover::before {
-                        opacity: 1;
-                        /* Make the shadow visible on hover */
-                    }
+            .footer-container:hover::before {
+                opacity: 1;
+                /* Make the shadow visible on hover */
+            }
+            .footer-container:hover,
+            .container1 li:hover,
+            .scrollable-page #Introduction:hover,
+            .top-container button:hover,
+            .container:hover {
+                transform: scale(1.0);
+                /* Adjust the scale factor as needed */
+                transition: transform 0.2s ease;
+                /* Add transition for smooth animation */
+                border-color: #ea00ff7f;
+                /* Change the border color on hover */
+                box-shadow: 0 0 15px rgb(115, 0, 255, 0.7);
+                /* Deep shadow on hover */
+            }
+            @keyframes ticker-move {
+                0% {
+                    transform: translateX(50%);
+                }
 
-                    .footer-container:hover,
-                    .container1 li:hover,
-                    .scrollable-page #Introduction:hover,
-                    .top-container button:hover,
-                    .container:hover {
-                        transform: scale(1.05);
-                        /* Adjust the scale factor as needed */
-                        transition: transform 0.2s ease;
-                        /* Add transition for smooth animation */
-                        border-color: #ea00ff7f;
-                        /* Change the border color on hover */
-                        box-shadow: 0 0 15px rgb(115, 0, 255, 0.7);
-                        /* Deep shadow on hover */
-                    }
+                30% {
+                    transform: translateX(-50%);
+                }
 
-                    @keyframes ticker-move {
-                        0% {
-                            transform: translateX(50%);
-                        }
+                60% {
+                    transform: translateX(20%);
+                }
 
-                        30% {
-                            transform: translateX(-50%);
-                        }
+                90% {
+                    transform: translateX(-10%);
+                }
 
-                        60% {
-                            transform: translateX(20%);
-                        }
+                95% {
+                    transform: translateX(5%);
+                }
 
-                        90% {
-                            transform: translateX(-10%);
-                        }
-
-                        95% {
-                            transform: translateX(5%);
-                        }
-
-                        100% {
-                            transform: translateX(0);
-                        }
-                    }
-                </style>
+                100% {
+                    transform: translateX(0);
+                }
+            }
+        </style>
 
 
-                <div class="ticker-container">
-                    <div class="ticker">
-                        <div class="footer-container">
-                            <button onclick="location.href='/brightness';">Brightness</button>
-                        </div>
-                        <div class="footer-container">
-                            <button onclick="location.href='/blur';">Blur</button>
-                        </div>
-                        <div class="footer-container">
-                            <button onclick="location.href='/rotation';">Rotation</button>
-                        </div>
-                        <div class="footer-container">
-                            <button onclick="location.href='/crop';">Crop</button>
-                        </div>
-                        <div class="footer-container">
-                            <button onclick="location.href='/vintage';">Vintage</button>
-                        </div>
-                        <div class="footer-container">
-                            <button onclick="location.href='/saturation';">Saturation</button>
-                        </div>
-                    </div>
+        <div class="ticker-container">
+            <div class="ticker">
+                <div class="footer-container">
+                    <button onclick="location.href='/brightness';">Brightness</button>
                 </div>
+                <div class="footer-container">
+                    <button onclick="location.href='/blur';">Blur</button>
+                </div>
+                <div class="footer-container">
+                    <button onclick="location.href='/rotation';">Rotation</button>
+                </div>
+                <div class="footer-container">
+                    <button onclick="location.href='/crop';">Crop</button>
+                </div>
+                <div class="footer-container">
+                    <button onclick="location.href='/vintage';">Vintage</button>
+                </div>
+                <div class="footer-container">
+                    <button onclick="location.href='/saturation';">Saturation</button>
+                </div>
+            </div>
+        </div>
 
-                <script>
-                    const ticker = document.querySelector('.ticker');
+        <script>
+            const ticker = document.querySelector('.ticker');
+            function stopTickerIfHidden() {
+                const tickerRect = ticker.getBoundingClientRect();
+                if (tickerRect.left >= (window.innerWidth - ticker.offsetWidth) / 2) {
+                    ticker.style.animation = 'none';
+                }
+            }
+            ticker.addEventListener('animationiteration', stopTickerIfHidden);
+        </script>
+        <script>
+            function validateUpload() {
+                var fileInput = document.getElementById('imageUpload');
+                if (fileInput.files.length === 0) {
+                    alert('Please choose a file to upload.');
+                    return;
+                }
+                document.getElementById('uploadForm').submit();
+            }
+            // Get the scrollable elements on both pages
+            const page1Scrollable = document.getElementById('page1Scrollable');
+            const page2Scrollable = document.getElementById('page2Scrollable');
 
-                    function stopTickerIfHidden() {
-                        const tickerRect = ticker.getBoundingClientRect();
-                        if (tickerRect.left >= (window.innerWidth - ticker.offsetWidth) / 2) {
-                            ticker.style.animation = 'none';
-                        }
-                    }
+            // Add event listeners to sync scrolling
+            page1Scrollable.addEventListener('scroll', () => {
+                const scrollPosition = page1Scrollable.scrollTop;
+                page2Scrollable.scrollTop = scrollPosition;
+            });
 
-                    ticker.addEventListener('animationiteration', stopTickerIfHidden);
-                </script>
+            page2Scrollable.addEventListener('scroll', () => {
+                const scrollPosition = page2Scrollable.scrollTop;
+                page1Scrollable.scrollTop = scrollPosition;
+            });
 
-
-                <script>
-                    function validateUpload() {
-                        var fileInput = document.getElementById('imageUpload');
-                        if (fileInput.files.length === 0) {
-                            alert('Please choose a file to upload.');
-                            return;
-                        }
-                        document.getElementById('uploadForm').submit();
-                    }
-                    // Get the scrollable elements on both pages
-                    const page1Scrollable = document.getElementById('page1Scrollable');
-                    const page2Scrollable = document.getElementById('page2Scrollable');
-
-                    // Add event listeners to sync scrolling
-                    page1Scrollable.addEventListener('scroll', () => {
-                        const scrollPosition = page1Scrollable.scrollTop;
-                        page2Scrollable.scrollTop = scrollPosition;
-                    });
-
-                    page2Scrollable.addEventListener('scroll', () => {
-                        const scrollPosition = page2Scrollable.scrollTop;
-                        page1Scrollable.scrollTop = scrollPosition;
-                    });
-
-
-
-                </script>
+        </script>
 
 
 </body>
@@ -1163,7 +1164,8 @@
 
 <div class="about-us">
     <h2>Developer</h2>
-    <img style="border-radius: 100px; height: 200px;" src="{{ url_for('static', filename='./image/anshu.jpg') }}" alt="Anshu">
+    <img style="border-radius: 100px; height: 200px;" src="{{ url_for('static', filename='./image/anshu.jpg') }}"
+        alt="Anshu">
 
     <p>
     <ul>Anshu </ul>
@@ -1176,10 +1178,14 @@
         <a href="https://instagram.com" target="_blank"><img
                 src="https://cdn-icons-png.flaticon.com/128/3955/3955024.png" alt="Instagram"></a>
         <a href="www.linkedin.com/in/anshu-singh728" target="_blank"><img
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMwAAADACAMAAAB/Pny7AAAAdVBMVEUAe7X///8AdbIAcK9dmsTx9fn7/P2gvdh0o8rp8PYAZqsAebQAd7MAbq+VuNYAc7EAaq3L3+zW5/G71+iHsdJ3qs6Tv9q60uQ8ir09ksFtqM0sh7sWgLgEg7kpf7ddn8hSk8KvzeKhx96JuNV9sdFKmcWoxNyOYzq3AAAKbUlEQVR4nN2dW6OqKhCAEZJygZHaxe7Z7f//xKPVWpkKDqnAPvOyH3a2/AKGYWaYQV5n8bM1Fwx1EMbxOvO7vwnq9jj1o00Y4i4kT+Ezsol8ahHGj+9r0m1Q3sJEuL7HncanA4wfTVPSw6C8hZPtNOqA8zWMn8x3hPeJ8sTZzZOvcb6EocliR3qaX5/CyG6RfLl2voLJUbZ9LZUGHLH9EucbmHhxYL1PsLJwflgEZmCWBz4oygOHHZYGYKJ9/8u+EYfso4Fh6GY22FqpCpttNFeOFoyf7IgplELIYaWlpnVg4is2MsPewvE11hgdOAxdnYZTx1IRpxWcBgzjXw69mi5gmsMFPNWgMPHR9BT7FY6Pcb8wSYrNT7GXMJwmfcIs7UyxX8HAHRQEs+DWhuUpjC96ggmOFrRYlUYcAcZaO0w8MrpRyoSM2tVAK0x0coIlpzm12mptMM6wQGhaYJJU2GZ4i2hT0WqYxK5Kroo4qGmUMMnBoXEpRByUM00FE6VOjUshOFXRKGCi1JI1phKcKjS0HCY4OTcuheCTfPeUwgRHJ1nydTOS0shg/Kt9G6ZZmLjKDjgSGLpUsjCOMRbcjv3JxFJy+JTAZEjxnkygdDSZTEZbZkV1M5TpwKgUGcO7eRYFPvXj5D5BNlYWlyjoRhilIhOLUtQhyG42Bkei0hphjooXJJV4XbCwcaAWRyjMOZR/yyyrLj56tWFXh2cYTKx4uVnTdxxt0IgGS6AOQ7fyBSOavb82vFB4W3+VOsxVsfhZ8+abKeblYIKv7TDJQb6eicy5uLcwNKx+uKnC+CPFwHCZ/a1SGYOJqOnnCgxdKp7mJ5n5HduAQWhaWTYVGOUZRkgDjYGNeVY3BD5h/IVqPydTmbnqr62c43Dl1/2EWTHVbk7GslCJcqUNJ5yt5DDBSGlokeocfcOc7JywKwe1Mgxt2S9cWzO5hB/WFdJ4JbyWabPAXAz6U/i+/PuWYOiyTcEy2T7T+uRgEpZPnSWYQHW6fAiZN6szas8pxVBpaEowl9aflx2a51kyM/HezRJemmB8gDuGLJr0mb+z6Mhhwm+Agcx7JhrOM3RjNeoRLuswsJ+XsxoNVZ0ZDAjf0RrMGeaY4KwS+A0Wtp2FIqvBQK0rxj9yDJKT0gIyIXxdhUkO0GcZJ7dXTmhwTodJ1NSTv1PaL8xRZ6fgs3B/O53QT+hE0INtPmHiVPMX5hjbznT4E/Ybs3nBLFt3f4eFoWkZxtJ5pC/BE78Ek2z/4YEpzs9JCWYJW8iYhM3yodO47FOV2xyMcyzIU0S+Ar//PRlfvmGCCWjHxKOxRKYl/cFPU9nH3pOZ5RR4vz5u5tP809Pr5rZFIfnaBS8mwR9MsgWNDBn7tFmC0prLv1jyKTp9GXE8JLdLEgeB7z+/Mf83iKPlTcy+0/UvP80D5g6LX8IcGngiDaA+YfgPP+cMDf9Pg2z/840qYuL+CxMoHUw9wzCxV+aMROtvjIrnPCtgIqAu6wOGoWtbam+mCEPIhG3jF8wKeB7pAYYfshYUr0hB0L8EIlZPGH9qDCY83CEp1/78oEvz8LbmMMEN+GQPMAtYwrV/0TWv8C14wMTQB7vDqDOsyl941YRhKH7AQJdMZxg63Uj+py7BSHOikVUBQ6FLpjvMGJg5XkikuWwKRzjyfHD6UmeYu85tmIseDD76OQzc6d0ZRuveFd1p0RReZ+RF4HyRzgpATxI9BzaOcpgV+BnDMB7SGppwlcNcwP5I0zB6sQWyzGFUWT92YQKt8404eojC831Nw2j8zsXfTSmi8OOqcRi9NBZGkQ+PrRiHCbQS82Y+in/chdFLL/iJkUbUyzgMXepEfmYJ0sjhMQ7jRTqLJjwjsJlpA0aVlFh/vSXSiHuZhwl03AHiijRiGT3CBA9pPUL7Gw19xo8IembuD4bGq/tiMjpuFuOs5U65D7e1cpgbWsNNhn5g4umJh0JgIQTB6Vx5XqN3DQ3A1kjD/98HDM3WuLQOsNiOVSc2uElf+M7Q3igMvVev5HE2V3weftjKYfZoB/90DzBJ/fj48hNLYHSSPzRQ+oAJbg2qlinKmMSw+IQNGJo12k6yZKkCZrCLb51hJI6gp9e7O8zO6JqRmfRCqp/LUSwAzN4gTCSx0EOpOz3YaMDsTe4zVGahC6k/HRoHKyTfZ0xaALLjCR71ArM2apvJjhtyGH8ON87wzaTVLHXR9wOTW81z+DhaGBl4iCJ/vSsaGzxpDgwzNuoDGBYmPBv1zgwLM0uM+s2+gNFYBT+xUY/msDAzH1F4kNptGJaj0LW5KMCgMHhNjcZnBoUp4jMmI2eDwoRLszHNQWFmRUwz/p+sGR4XeQDgE43TMGwbPDI0oBrAaRjxyNCAR3SchiHLInfGS/4fMMkz3wzqNXQZhu2e+WZgd47LMI+LwWZzNIeD+c3RNJk9OxjMb/asFwG90w7D8PQ3r9lfwJ5wGIY83IjPuwCw9CF3YRj+uwvgRbAbZw7DlG5pAO/PuAtTvj8DvNnkLAxjpZtNwHnmLMxvzZbXbcAJxAhwFgZPaAnGUxUCch8GvS6P/92gBawaV2F45Qatt/mXYSp3m71IUQnMdZi/iyx/9QAAMWpHYfjp99N/MNk/C4OzGgxtd9K4CcPexQHf1U3ao05uwpSKUL5haGvNRSdhOH6/VKki0LItUuMkzKxUbaUE01p5xkUYtis9Wi4Jdm4ZGhdhPkqulmH8lriTgzB4XX7yo4zeSn2V3j0YJj6KAn7WBFTnRLsHIzbSmoBFXSCVenYOhleuF1fqaM5Vq8Y1GCYqyZ2VCqfKnEjXYGrlY6uFdFVHTtdgdtVaa1UYqrjtbSHfTAWDR9XXqdVrVtz2JmPJnwSnNUpsWTmMJ4eprv4mGO8iXTViGkgkLpVrxaNI9rGF5KvzyS97ZCrdLPCl9uoNBdubUtxfND8S+Shwimeyj0lfjOk/gm/1N2+ACYZtMNuP8KZy6019ATIXauOphZGs4cUbOzZcHWvVVBfS2F6vEcZX1222L6JZ/TV3OYldam9WFyFp3CTpP7PSq5JgVjhaNb+1rM0RsOCpFWkqgKuEoS73bJJZVdJuWv7C0YmG5fWeFH3O3CxHieWdwVQd6GJL9fGVIm+BoYbJaZzTAkLFou7a6Nx2I9tgIDBelDrT57QQouzZ2NrpNHJppom2vq1tPWjjk7X+BVUhyvUCgXGl0zGEBdC3OTi6cLxhBNCFGtBR27/ar5nNuLTvpB6M511s29Ac1b0X38J4Z7utdXEqs5O/gbGronF7Y3AtGC9eYEuDg/GivWW7Hoznn7dWBkdsz+CClWCYfKqNzOtoRkYa9So1YLzgYro9I8YXncJPOjCFV92oOUB2WmVENWEK/6CpLq2ME9Dm0gHGi9fcBA7D8kZk/cEUOyga2r5hHAH3ya4wuSJIhw0UcJ5qLfwuMLkimKdiMBwu0rnewu8G49FougsHaXDEwt00glR17w+mwBnvw94tHE52y29ROsAU5fDO635xMNmOWwrrDQVT9L5Y3UhfNg4j4XrVXvNwMJhC4gvD3RcP44JdtfeVqvwHGye9YI9plUoAAAAASUVORK5CYII=" alt="LinkedIn"></a>
-        <a href="https://www.youtube.com/@anshu_singh_728" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMwAAADACAMAAAB/Pny7AAAAclBMVEX/AAD/////x8f/Kyv/UlL//Pz/R0f/SUn/4+P/+Pj/bW3/w8P/19f/5ub/8fH/zMz/OTn/Tk7/Pz//3d3/6+v/ubn/YmL/aGj/kJD/r6//dnb/WFj/GRn/Jib/NDT/Q0P/fX3/ior/mZn/pKT/Dg7/g4MFmX3DAAADvElEQVR4nO3bbXOyOBgFYAQUEIQg8ibyrv//Lz7B7s62ne5sCM2xnT3Xp44zdnqUJnfuJJZFRERERERERERERERERERERERERERERET/U7fW6cS591LXdZumKIqyLI8fyBdK+XrTuG7q9f1ZdO3t/uo/+53b2S2vw1hV1TTXeR4mSRRlWeafLnEcB8F+sVssPwRBIF+9nHw/i6IkscOwrudJvnccjkUqXpurnOo8ifw42G0VX7LIzucqfVWUIfT3m1N8FER584oorR1/c5I3pxqfxYuMRJH2NjrL2VgWCZzmbhvMstthn7TZaJbdpQRmSU0+ZIsQGGY0nGXnF7AsbW06zG6ChekT42HyGyqMmxkPE7moMIWZuf+9+IoKc/zukuwLFSrM1XwW3AiACJM7oDADIEzSg8JUgDA+aF1zmwBhYlANcFMtM7P6op8GNDYrVzOhc8x/ehhH9S+0HcspdQvsAROmC9XDWJYY9Ho3IyiM6jLTfpsrhFaRPWFKTaFaNNt/T3w6ZXbdQsIoNzPsf2bxY7a2ngOVADphLGv214UJO0wY1eXMhzCWyFfNOjYmTK/6GdufnpRruGIhlIifHca6P9RHgugMCXM46YaRj2il+klkmDCe6rP/RRjrns5q45qPWQNsCiPrVKFUQZwOkDCp6r/x12Hkt+Mp/AZQmI3fzDPOf1dEF+93hHFKhdrzd4RpG6XxGfSYHbTnGele1IqjGSaM/qQpv9VZdZICDc29Xm0m3Sf1dWeGCaNXNUtDtGLRCSpnhF6Yc7Kq3x5hCs31K81FvXLrAFQ1r+0BLIbVuyCgxdmaVtPTvdDYnQItm9eGabQ6gaCGhnJH8xkmrfT6ZjOm1aTcOJdhxEN3/xPUN1Pe0gidQf9YCqijqbzZ5K9pYHw2gMIgtgFRuwCYMEdQGJW11VYB6mBTo1rGb4Da0zR/QktKMGszWWmq7jZtkGNKsxU7tBvMsBPbgL1z2NkZ62H8JND+AQujU9Kvk+HONd71t/cV5cBLDqPh43Mxqsx8Mjw4I48CyyJg5XbrOj7shOabh8EH7YIbyv4yGvtufHgWOT7bRornwMaNyu9V4YbzZF+75Lip/5P2OE51+B2XzoI4i8J6Go+YBtO/BhJpU5TX6/Wx3Aes89B+Xgj0T8/7gHH8/jbgfr/cBjydnpcB7TDM63mexkG+uSxcT7w2yCe3W9s6XSeEOPf94eB5qeR+lKbe4bBc0RRd1zntz7qnSURERERERERERERERERERERERERERET0C/wB3oJE/NtufE4AAAAASUVORK5CYII=" alt="YouTube"></a>
+                src="data:image/png;base64,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"
+                alt="LinkedIn"></a>
+        <a href="https://www.youtube.com/@anshu_singh_728" target="_blank"><img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMwAAADACAMAAAB/Pny7AAAAclBMVEX/AAD/////x8f/Kyv/UlL//Pz/R0f/SUn/4+P/+Pj/bW3/w8P/19f/5ub/8fH/zMz/OTn/Tk7/Pz//3d3/6+v/ubn/YmL/aGj/kJD/r6//dnb/WFj/GRn/Jib/NDT/Q0P/fX3/ior/mZn/pKT/Dg7/g4MFmX3DAAADvElEQVR4nO3bbXOyOBgFYAQUEIQg8ibyrv//Lz7B7s62ne5sCM2xnT3Xp44zdnqUJnfuJJZFRERERERERERERERERERERERERERERET/U7fW6cS591LXdZumKIqyLI8fyBdK+XrTuG7q9f1ZdO3t/uo/+53b2S2vw1hV1TTXeR4mSRRlWeafLnEcB8F+sVssPwRBIF+9nHw/i6IkscOwrudJvnccjkUqXpurnOo8ifw42G0VX7LIzucqfVWUIfT3m1N8FER584oorR1/c5I3pxqfxYuMRJH2NjrL2VgWCZzmbhvMstthn7TZaJbdpQRmSU0+ZIsQGGY0nGXnF7AsbW06zG6ChekT42HyGyqMmxkPE7moMIWZuf+9+IoKc/zukuwLFSrM1XwW3AiACJM7oDADIEzSg8JUgDA+aF1zmwBhYlANcFMtM7P6op8GNDYrVzOhc8x/ehhH9S+0HcspdQvsAROmC9XDWJYY9Ho3IyiM6jLTfpsrhFaRPWFKTaFaNNt/T3w6ZXbdQsIoNzPsf2bxY7a2ngOVADphLGv214UJO0wY1eXMhzCWyFfNOjYmTK/6GdufnpRruGIhlIifHca6P9RHgugMCXM46YaRj2il+klkmDCe6rP/RRjrns5q45qPWQNsCiPrVKFUQZwOkDCp6r/x12Hkt+Mp/AZQmI3fzDPOf1dEF+93hHFKhdrzd4RpG6XxGfSYHbTnGele1IqjGSaM/qQpv9VZdZICDc29Xm0m3Sf1dWeGCaNXNUtDtGLRCSpnhF6Yc7Kq3x5hCs31K81FvXLrAFQ1r+0BLIbVuyCgxdmaVtPTvdDYnQItm9eGabQ6gaCGhnJH8xkmrfT6ZjOm1aTcOJdhxEN3/xPUN1Pe0gidQf9YCqijqbzZ5K9pYHw2gMIgtgFRuwCYMEdQGJW11VYB6mBTo1rGb4Da0zR/QktKMGszWWmq7jZtkGNKsxU7tBvMsBPbgL1z2NkZ62H8JND+AQujU9Kvk+HONd71t/cV5cBLDqPh43Mxqsx8Mjw4I48CyyJg5XbrOj7shOabh8EH7YIbyv4yGvtufHgWOT7bRornwMaNyu9V4YbzZF+75Lip/5P2OE51+B2XzoI4i8J6Go+YBtO/BhJpU5TX6/Wx3Aes89B+Xgj0T8/7gHH8/jbgfr/cBjydnpcB7TDM63mexkG+uSxcT7w2yCe3W9s6XSeEOPf94eB5qeR+lKbe4bBc0RRd1zntz7qnSURERERERERERERERERERERERERERET0C/wB3oJE/NtufE4AAAAASUVORK5CYII="
+                alt="YouTube"></a>
         <a href="https://twitter.com/anshusingh70075" target="_blank"><img
-            src="data:image/png;base64,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" alt="Instagram"></a>
+                src="data:image/png;base64,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"
+                alt="Instagram"></a>
         <!-- Add more social media links here -->
     </div>
 </div>
@@ -1223,6 +1229,5 @@
     .social-links img {
         height: 30px;
     }
-
-    
 </style>
+
