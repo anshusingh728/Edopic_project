@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags and styles -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo-Editor</title>
+    <style>
+
+      .container {
+        background-color: #fff; /* fallback color */
+        background-image: linear-gradient(to bottom, #fff, #008b8b, #fff); /* gradient */
+
+        /* Other styles for your body */
+      }
+      
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-image: url('https://i1.wp.com/static.web-backgrounds.net/uploads/2012/08/Abstract_Blue_Background_with_Wavy_Lines.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+        .container {
+            bottom:30px
+            max-width: 1000px;
+            margin: 70px auto;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-container {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input[type="number"], input[type="text"] {
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid cyan;
+            border-radius: 5px;
+            font-size: 16px; /* Increase font size for the input */
+
+        }
+
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+       
+          
+          /* Css of individual filtres box */
+          .filters-container {
+            width: 400px;
+            margin: 50px auto 0;
+            padding: 20px;
+            border: 1px solid  #00008b;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 10px rgba(122, 93, 93, 0.1);
+            overflow-y: visible;
+        }
+      
+        
+        .filtered-image-container {
+          flex: 1;
+          padding: 10px;
+          text-align: center;
+        }
+       
+
+        /* CSS for Apply Filters button */
+        .btn-apply-filters {
+        background: linear-gradient(to bottom right, #00cccc, #008b8b); /* Linear gradient background */
+        border: none;
+        color: white; /* White text */
+        padding: 8px 16px; /* Padding */
+        text-align: center; /* Center text */
+        text-decoration: none;
+        display: inline-block;
+        font-size: 24px;
+        border-radius: 5px; /* Rounded corners */
+
+      }
+
+    .btn-apply-filters:hover {
+    background: linear-gradient(to bottom right, #008b8b, #00cccc); /* Reverse gradient on hover */
+    }
+
+    </style>
+
+
+<style>
+  
+
+  
+  
+  /* CSS for top buttons */
+  .btn-upload,
+  .btn-reset {
+    margin: 20px 100px;
+    background-color: #008b8b;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative; /* Ensure buttons are positioned relative to the top container */
+    z-index: 1001; /* Ensure buttons are above the top container */
+  }
+  
+  .btn-upload:hover,
+  .btn-reset:hover {
+    background-color: #00cccc;
+  }
+  
+  .btn-download {
+    margin-left: 10px; /* Add margin for spacing */
+    background-color: #008b8b;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-download:hover {
+    background-color: #00cccc;
+  }
+  
+  /* Positioning the buttons above the top container */
+  .btn-upload,
+  .btn-reset {
+    position: relative;
+    z-index: 1001; /* Ensure buttons are above the top container */
+  }
+  
+  /* CSS for top container */
+  .top-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: black; /* Dark navy blue color */
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between; /* Space evenly between items */
+    align-items: center;
+    z-index: 1000; /* Ensure it's above other content */
+  }
+  
+  /* CSS for top buttons */
+  .btn-upload,
+  .btn-reset,
+  .btn-download {
+    background-color: #008b8b;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px; /* Increase font size for the buttons */
+
+  }
+  
+  .btn-upload:hover,
+  .btn-reset:hover,
+  .btn-download:hover {
+    background-color: #00cccc;
+  }
+  
+
+  /* CSS for increasing size of checkbox input and label */
+.filters-container label {
+  display: block; /* Ensure label takes full width */
+  padding: 15px; /* Increase padding for the label */
+  font-size: 16px; /* Increase font size for the label */
+}
+
+.filters-container input[type="checkbox"] {
+  /* Increase size of checkbox input */
+  transform: scale(1.5); /* Adjust the scale factor as needed */
+  margin-right: 10px; /* Add spacing between checkbox and label */
+}
+
+</style>
+
+
+
+
+    
+</head>
+<body>
+  <div class="top-container">
+    <button onclick="location.href='/'" class="btn-upload">
+      Upload Image
+    </button>
+  
+    <button id="resetButton" class="btn-reset">Reset Image</button>
+  
+    <div class="download-btn-group">
+      <form method="POST">
+        <button type="submit" name="download_button" value="download" class="btn-download">
+          Download
+        </button>
+      </form>
+    </div>
+  </div>
+  
+
+  <div class="container">
+    <div class="image-container">
+        <h2>Original Image</h2>
+        <img src="{{ url_for('static', filename='original.jpg') }}" alt="Original Image">
+    </div>
+    <div class="image-container">
+        <h2>Filters</h2>
+        <form action="{{ url_for('filter') }}" method="post" onsubmit="setCropCoords()">
+          <div class="filters-container">
+            <label><input type="checkbox" name="rotate"> Rotate</label><br>
+            Rotate Angle: <input type="number" name="rotate_angle" value="0"><br>
+          </div>
+          <div class="filters-container">
+            <label><input  type="checkbox" name="crop"> Crop</label><br>
+            Crop Top: <input type="number" id="cropTop" name="cropTop" value="0" min="0" max="100"><br>
+            Crop Right: <input type="number" id="cropRight" name="cropRight" value="0" min="0" max="100"><br>
+            Crop Bottom: <input type="number" id="cropBottom" name="cropBottom" value="0" min="0" max="100"><br>
+            Crop Left: <input type="number" id="cropLeft" name="cropLeft" value="0" min="0" max="100"><br>
+          </div>
+          <div class="filters-container">
+            <label><input type="checkbox" name="blur"> Blur</label><br>
+            Blur Radius: <input type="number" name="blur_radius" value="0"><br>
+          </div>
+          <div class="filters-container">
+            <label><input type="checkbox" name="brightness"> Brightness</label><br>
+            Brightness Factor: <input type="number" step="0.1" name="brightness_factor" value="1.0"><br>
+          </div>
+          <div class="filters-container">
+            <label><input type="checkbox" name="saturation"> Saturation</label><br>
+            Saturation Factor: <input type="number" step="0.1" name="saturation_factor" value="1.0"><br>
+          </div>
+            <input type="hidden" id="cropCoords" name="crop_coords" value="0, 0, 0, 0">
+            <div class="filters-container">
+              <label><input type="checkbox" name="color_tone"> Color effect</label><br>
+              color Factor: <input type="number" step="0.1" name="adjustment_factor" value="1.0"><br>
+              <select name="color_tone_effect">
+                  <option value="color">Color</option>
+              </select><br>
+          </div>
+          <br><br>
+          <button class="btn-apply-filters" type="submit">Apply Filters</button>
+        </form>
+    </div>
+    <div class="filtered-image-container">
+        <h2>Filtered Image</h2>
+        <img src="{{ url_for('static', filename='filtered.jpg') }}" alt="Filtered Image">
+    </div>
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const line = document.querySelector(".moving-line");
+  line.style.transform = "scaleX(1)";
+});
+function setCropCoords() {
+const cropTop = document.getElementById('cropTop').value;
+const cropRight = document.getElementById('cropRight').value;
+const cropBottom = document.getElementById('cropBottom').value;
+const cropLeft = document.getElementById('cropLeft').value;
+
+const cropCoords = `${cropTop}, ${cropRight}, ${cropBottom}, ${cropLeft}`;
+document.getElementById('cropCoords').value = cropCoords;
+}
+
+
+// Function to handle the download button
+document.addEventListener("DOMContentLoaded", function () {
+  const downloadBtn = document.querySelector("[name='download_button']");
+  downloadBtn.addEventListener("click", function (event) {
+    // Prevent the default form submission behavior
+    event.preventDefault();
+    // Your download logic here
+    // For example, you can create a link and simulate a click to download the image
+    const downloadLink = document.createElement("a");
+    downloadLink.href = "{{ url_for('static', filename='filtered.jpg') }}"; // Replace with the actual URL of the image to download
+    downloadLink.download = "filtered.jpg"; // Specify the download filename
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+  });
+});
+
+
+
+document.getElementById('resetButton').addEventListener('click', function() {
+  fetch('/reset', {
+      method: 'POST'
+  })
+  .then(response => {
+      if (response.ok) {
+          return response.blob();
+      } else {
+          throw new Error('Reset request failed with status ' + response.status);
+      }
+  })
+  .then(blob => {
+      // Create a URL for the blob object (original image) received from the server
+      let originalUrl = URL.createObjectURL(blob);
+
+      // Check if the image element exists before updating its source
+      let filteredImage = document.querySelector('.filtered-image-container img');
+      if (filteredImage) {
+          filteredImage.src = originalUrl;
+      } else {
+          throw new Error('Filtered image element not found');
+      }
+  })
+  .catch(error => {
+      console.error('Error resetting image:', error);
+  });
+});
+
+</script>
+
+</body>
+</html>
+

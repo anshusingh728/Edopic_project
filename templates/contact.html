@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        
+            background-color: #fff; /* fallback color */
+            background: radial-gradient(circle, rgba(0, 0, 255, 0.955), rgba(10, 3, 16, 0.9), rgba(128, 0, 128, 0.7));
+            /* Other styles for your body */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh; /* Minimum height to fill the viewport */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .headline {
+            color: white;
+            font-size: 36px;
+            margin-bottom: 20px;
+            position: absolute;
+            top: 20px;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            border: 2px solid black;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        p {
+            text-align: justify;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            
+        }
+
+        input[type="submit"] {
+            background: linear-gradient(to bottom right, #00cccc, #008b8b);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .success-message {
+            margin-top: 20px;
+            text-align: center;
+            color: green;
+        }
+
+        footer {
+            background: linear-gradient(to right, rgba(24, 9, 28, 0.8), rgba(56, 6, 56, 0.7), rgba(111, 0, 255, 0.8), rgb(250, 36, 218));
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+            border-top: 2px solid black;
+        }
+
+        footer .contact-info {
+            max-width: 600px;
+            margin: 0 auto; /* Center the content */
+            text-align: left;
+            color: white; /* White text color */
+        }
+
+        .social-media {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .social-media img {
+            width: 30px;
+            margin-right: 10px;
+        }
+
+        .image-container {
+            position: relative;
+        }
+
+        .image-container img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .contact-info-container {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            border: 2px solid black;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            text-align: center;
+        }
+
+        .social-media {
+            margin-top: 10px;
+        }
+
+        .social-media img {
+            width: 30px;
+            margin-right: 10px;
+        }
+        .button {
+            display: inline-block;
+            padding: 15px 30px; /* Increased padding for larger button */
+            background: linear-gradient(to bottom right, #00cccc, #008b8b);
+            color: #fff; /* Text color */
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            cursor: pointer; /* Add cursor pointer on hover */
+            border: none; /* Remove button border */
+        }
+
+          .container {
+            width: 500px;
+            height:500px; 
+            margin: 50px auto 0; 
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-size: cover; 
+            background-position: center; 
+            overflow-y: scroll;
+            background-size: cover;
+            background-repeat: no-repeat;
+  
+  
+          }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="color:black">Contact Us</h1>
+        <h3>Feel free to reach out to us with any questions, feedback, or inquiries you may have. We're here to help!</h3>
+        <form action="/contact" method="post">
+            <label style="color:black" for="name">First Name:</label>
+            <input style="color:black" type="text" id="name" name="name" required>
+            <label style="color:black" for="email">Email:</label>
+            <input style="color:black" type="email" id="email" name="email" required>
+            <label style="color:black" for="whatsapp">WhatsApp Number:</label>
+            <input style="color:black" type="text" id="whatsapp" name="whatsapp">
+            <label style="color:black" for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <form action="/success" method="post">
+                <!-- Your form fields here -->
+                <input type="submit" value="Submit">
+              </form>
+        </form>
+    </div>
+</div>
+<br>
+    <div>
+        <button onclick="location.href='/';" class="button">Go Back To editing</button>
+    </div>
+</body>
+</html>
